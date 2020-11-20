@@ -14,13 +14,16 @@ public class GameManager : MonoBehaviour
     public float pSpeed;
     public float bSpeed;
     public float bDestoryTime;
+    public float pHp;
+    private float eHp;
 
     Vector3 MousePosition;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        pHp = 100;
+        eHp = 100;
     }
 
     // Update is called once per frame
@@ -28,6 +31,11 @@ public class GameManager : MonoBehaviour
     {
         Move();
         FireBullet();
+
+        if (pHp <= 0)
+        {
+
+        }
     }
 
     private void Move()
