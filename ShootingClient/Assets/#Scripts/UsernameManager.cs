@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class UsernameManager : MonoBehaviour
 {
-    public static UsernameManager instance;
-    void Awake() { if (!instance) instance = this; }
+    public static UsernameManager instance = null;
+    void Awake() {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this);
+    }
 
     private string userName;
     public string UserName

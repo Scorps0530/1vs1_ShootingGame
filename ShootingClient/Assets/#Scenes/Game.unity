@@ -503,6 +503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 672027396}
   - component: {fileID: 672027397}
+  - component: {fileID: 672027398}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -537,12 +538,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1971209359}
-  bullet: {fileID: 4286225882275384331, guid: 3e67f719c2fb9aa41ac179ebe3eab1b9, type: 3}
+  enemy: {fileID: 1616159102}
+  pBullet: {fileID: 4286225882275384331, guid: 3e67f719c2fb9aa41ac179ebe3eab1b9, type: 3}
+  eBullet: {fileID: 2103075051124148615, guid: 86f4d1034b1700f46bb8268e418a991e, type: 3}
   firepoint: {fileID: 271670374}
   pSpeed: 0.04
   bSpeed: 6.25
   bDestoryTime: 7.5
   pHp: 100
+  eHp: 100
+--- !u!114 &672027398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672027395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d3af47c1d7bd345812bc24d246fb2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &762872551
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
     void Awake() { if (!instance) instance = this; }
 
     public GameObject player;
-    public GameObject bullet;
+    public GameObject enemy;
+    public GameObject pBullet;
+    public GameObject eBullet;
     public Transform firepoint;
 
     public float pSpeed;
@@ -18,20 +20,19 @@ public class GameManager : MonoBehaviour
     public float eHp;
 
     Vector3 MousePosition;
-    
+
+    private ServerNetwork serverNetwork;
+
     void Start()
     {
+        serverNetwork = GetComponent<ServerNetwork>();
     }
    
     void Update()
     {
         Move();
         FireBullet();
-
-        if (pHp <= 0)
-        {
-
-        }
+        serverNetwork.GiveInfo();
     }
 
     private void Move()
@@ -48,7 +49,20 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(bullet, firepoint.position, firepoint.rotation);
+            Instantiate(pBullet, firepoint.position, firepoint.rotation);
+            serverNetwork.Shoot();
         }
+    }
+
+    public void SetEnemyInfo(float x, float y, float r, float hp)
+    {
+        enemy.transform.position = new Vector2(x, y);
+        enemy.transform.Rotate(0, 0, r);
+        eHp = hp;
+    }
+
+    public void EFireBullet()
+    {
+        Instantiate(eBullet, enemy.transform.position, enemy.transform.rotation);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Standby : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class Standby : MonoBehaviour
     private void Start()
     {
         serverNetwork = GetComponent<ServerNetwork>();
-        print(UsernameManager.instance.UserName);
         Invoke("JoinNewUser", 1f);
     }
 
@@ -28,13 +28,12 @@ public class Standby : MonoBehaviour
     {
         Alert.text = "플레이어 찾음!";
         yield return new WaitForSeconds(2f);
-
+        SceneManager.LoadScene("Game");
     }
 
     // 현재 사용자 접속 알림을 서버로 전송
     private void JoinNewUser()
     {
-        print("hi");
         serverNetwork.JoinNewUser();
     }
      
